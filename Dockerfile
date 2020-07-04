@@ -18,6 +18,10 @@ EXPOSE 3000
 RUN wget https://dl.grafana.com/oss/release/grafana_7.0.5_amd64.deb
 RUN dpkg -i grafana_7.0.5_amd64.deb
 
+# Remove unnecessary packages
+RUN rm grafana_7.0.5_amd64.deb
+RUN rm -rf /var/lib/apt/lists/*
+
 # Grafana bootup
 RUN update-rc.d grafana-server defaults 95 10
 
